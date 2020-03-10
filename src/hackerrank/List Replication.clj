@@ -1,6 +1,6 @@
 (defn replicate-list 
-    [repeat-n-times number-list]
-    (flatten (map #(repeat repeat-n-times %) number-list) ) )
+    [repeat-n-times collection]
+    (flatten (map #(repeat repeat-n-times %) collection) ) )
 
 
 ;(def number-list [3 1 2 3 4])
