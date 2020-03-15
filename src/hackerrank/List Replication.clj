@@ -1,17 +1,22 @@
+;problem
+;Given a list, repeat each element in the list N amount of times. The input and output portions 
+;will be handled automatically by the grader. You need to write a function with the recommended method signature.
+
 (defn do-replicate
-      ([repeat-n-times collection replicated-collection max-count]  
-      (if (empty? collection)
-            replicated-collection
-            (if (= max-count repeat-n-times)
-                        (recur repeat-n-times (vec (rest collection) )  (conj replicated-collection (first collection) ) 1 )
-                        (recur repeat-n-times collection (conj replicated-collection (first collection) ) (inc max-count) ) ) ) ) 
-    
-      ([repeat-n-times collection]
-          (do-replicate repeat-n-times collection [] 1) ) )
+  [n-times collection]
+  (loop [remaining-collection collection
+         replicated-collection []
+         repeat-n-times n-times 
+         counter 1]
+         (if (empty? remaining-collection)
+              replicated-collection
+              (if (= counter repeat-n-times )
+                    (recur (rest remaining-collection) (conj replicated-collection (first remaining-collection)) repeat-n-times  1 )
+                    (recur remaining-collection (conj replicated-collection (first remaining-collection)) repeat-n-times (inc counter)) ))))
 
-  ;(do-replicate 3 [1 2 3 4 5])
-
-  ;------------------------------------------------------------------------
+;(do-replicate 2 [1 2 3  4 5 ] )                
+;(do-replicate 2 '(1 2 3 4 5))
+;------------------------------------------------------------------------
   
   ;using inbuilt functions
   
